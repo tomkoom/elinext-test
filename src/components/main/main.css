@@ -1,0 +1,8 @@
+.Main {
+    padding: 24px;
+}
+
+.Search {
+    display: flex;
+    flex-direction: column;
+}
