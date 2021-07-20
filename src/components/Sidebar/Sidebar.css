@@ -1,18 +1,33 @@
 .Sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 64px;
-    background-color: #CBD5E0;
-    /* gap: 24px; */
-    height: 100vh;
-    padding: 24px;
+	display: flex;
+	flex-direction: column;
+	background-color: #cbd5e0;
+	height: 100vh;
+	padding: 20px;
+	/* position: sticky;
+	top: 0; */
 }
 
 .Sidebar ul {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 .Sidebar li {
-    padding: 16px;
+	padding: 16px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 4px;
+}
+
+.NavLink {
+	color: #718096;
+}
+
+.NavLink:hover {
+	color: #455a64;
+}
+
+.IsActive {
+	color: #171923;
+    /* color: #304ffe; */
 }

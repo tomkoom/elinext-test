@@ -1,0 +1,10 @@
+.Main {
+    width: 100%;
+}
+
+.Search {
+    display: flex;
+    flex-direction: column;
+}
+
+

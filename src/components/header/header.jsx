@@ -5,11 +5,16 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
     return (
-        <div className="Header">
-            <h1 className="Logo">Image Finder</h1>
-            <div className="UserProfile"><FontAwesomeIcon icon={faUser} /></div>
-        </div>
-    )
+		<div className="Header">
+			<a href="/">
+				<h1 className="Logo">ImageFinder</h1>
+			</a>
+
+			<div className="UserProfile">
+				<FontAwesomeIcon icon={faUser} size="lg" color="#718096" />
+			</div>
+		</div>
+	);
 }
 
 export default Header

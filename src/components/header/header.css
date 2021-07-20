@@ -7,7 +7,8 @@
 }
 
 .Logo {
-    font-size: 16px;
+    font-size: 20px;
+    letter-spacing: -1px;
 }
 
 .UserProfile {
@@ -15,6 +16,6 @@
     height: 48px;
     display: grid;
     place-content: center;
-    background-color: white;
     border-radius: 24px;
 }
+
