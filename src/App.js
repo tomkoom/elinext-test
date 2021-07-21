@@ -13,14 +13,9 @@ import { faImages, faBookmark, faUser } from "@fortawesome/free-solid-svg-icons"
 
 // Bootstrap
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import Home from './components/Home/Home';
 
 
-
-const styles = {
-  links: {
-    textDecoration: "none"
-  }
-}
 
 function App() {
   const [images, setImages] = useState([]);
@@ -49,9 +44,7 @@ function App() {
 
   // Get bookmarks from local storage when page loads
   useEffect(() => {
-    const imageBookmarks = JSON.parse(
-      localStorage.getItem("image-bookmarks")
-    );
+    const imageBookmarks = JSON.parse(localStorage.getItem("image-bookmarks")) || [];
 
     setBookmarks(imageBookmarks);
   }, []);
@@ -91,54 +84,55 @@ function App() {
       <Navbar bg="light" expand="sm">
         <Container className="px-4" fluid>
 
-          
-            <NavLink to="/" style={styles.links}>
-              ImageFinder
-            </NavLink>
-          
+
+          <NavLink to="/" style={{ textDecoration: "none", marginRight: "16px" }} >
+            <b>ImageFinder</b>
+          </NavLink>
+
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
 
-              
-                <NavLink
-                  exact={true}
-                  activeClassName="IsActive"
-                  className="NavLink"
-                  to="/images"
-                  style={styles.links}
-                >
-                  <div className="d-flex">
-                    <FontAwesomeIcon icon={faImages} size="lg" style={{ marginRight: "8px" }} />
-                    Images
-                  </div>
-                </NavLink>
-              
 
-              
-                <NavLink
-                  exact={true}
-                  activeClassName="IsActive"
-                  className="NavLink"
-                  to="/bookmarks"
-                  style={styles.links}
-                >
-                  <div className="d-flex">
-                    <FontAwesomeIcon icon={faBookmark} size="lg" style={{ marginRight: "8px" }} />
-                    Bookmarks
-                  </div>
-                </NavLink>
-              
+              <NavLink
+                exact={true}
+                activeClassName="IsActive"
+                className="mx-2"
+                to="/images"
+                style={{ textDecoration: "none" }}
+              >
+                <div className="d-flex align-items-center">
+                  <FontAwesomeIcon icon={faImages} style={{ marginRight: "8px" }} />
+                  Images
+                </div>
+              </NavLink>
+
+              <NavLink
+                exact={true}
+                activeClassName="IsActive"
+                className="mx-2"
+                to="/bookmarks"
+                style={{ textDecoration: "none" }}
+              >
+                <div className="d-flex align-items-center">
+                  <FontAwesomeIcon icon={faBookmark} style={{ marginRight: "8px" }} />
+                  Bookmarks
+                </div>
+              </NavLink>
             </Nav>
 
             <Nav>
 
-              <Nav.Link>
-                <div className="d-flex">
-                  <FontAwesomeIcon icon={faUser} size="lg" style={{ marginRight: "8px" }} />
+              <NavLink
+                to="#" className="mx-2"
+                style={{ textDecoration: "none", color: "#718096" }}
+              >
+                <div className="d-flex align-items-center">
+                  <FontAwesomeIcon icon={faUser} style={{ marginRight: "8px" }} />
                   Profile
-                </div></Nav.Link>
+                </div>
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -155,6 +149,7 @@ function App() {
           <Route path="/bookmarks" render={() => <Bookmarks
             bookmarks={bookmarks}
             handleRemoveBookmark={handleRemoveBookmark} />} />
+          <Route exact path="/" render={() => <Home />} />
         </Switch>
       </Container>
 
@@ -164,3 +159,14 @@ function App() {
 }
 
 export default App;
+
+
+
+// const handleAddBookmark = (image) => {
+//   if (!bookmarks.includes(image)) {
+//     const newBookmarkList = [...bookmarks, image];
+
+//     setBookmarks(newBookmarkList);
+//     saveToLocalStorage(newBookmarkList);
+//   }
+// };

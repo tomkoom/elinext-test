@@ -35,7 +35,10 @@ const ImageList = (props) => {
 									props.handleBookmarkAction(image)
 								}
 							>
-								<div className="d-flex" style={{cursor: "pointer"}}>
+								<div
+									className="d-flex"
+									style={{ cursor: "pointer" }}
+								>
 									<FontAwesomeIcon
 										className="mt-1"
 										icon={faBookmark}

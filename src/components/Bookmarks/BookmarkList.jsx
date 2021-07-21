@@ -5,7 +5,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const BookmarkList = (props) => {
 	return (
 		<div className="d-flex flex-wrap" style={{ gap: "20px" }}>
-			{props.bookmarks.length !== 0 ? (
+			{!props.bookmarks ? (
 				props.bookmarks.map((image, index) => (
 					<div key={index}>
 						<img
@@ -34,7 +34,10 @@ const BookmarkList = (props) => {
 									props.handleBookmarkAction(image)
 								}
 							>
-								<div className="d-flex">
+								<div
+									className="d-flex"
+									style={{ cursor: "pointer" }}
+								>
 									<FontAwesomeIcon
 										className="mt-1"
 										icon={faTimes}
