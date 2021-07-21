@@ -5,7 +5,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const BookmarkList = (props) => {
 	return (
 		<div className="d-flex flex-wrap" style={{ gap: "20px" }}>
-			{!props.bookmarks ? (
+			{props.bookmarks.length !== 0 ? (
 				props.bookmarks.map((image, index) => (
 					<div key={index}>
 						<img
@@ -19,6 +19,7 @@ const BookmarkList = (props) => {
 								image.secret +
 								".jpg"
 							}
+							alt={image.title}
 						/>
 						<div className="d-flex flex-column mt-2">
 							<h5>

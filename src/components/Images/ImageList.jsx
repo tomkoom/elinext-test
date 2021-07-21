@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 const ImageList = (props) => {
-	const Bookmark = props.Bookmark;
 
 	return (
 		<div className="d-flex flex-wrap mt-4" style={{ gap: "20px" }}>
@@ -22,6 +21,7 @@ const ImageList = (props) => {
 								image.secret +
 								".jpg"
 							}
+							alt={image.title}
 						/>
 						<div className="d-flex flex-column mt-2">
 							<h5>
