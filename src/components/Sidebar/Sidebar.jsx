@@ -9,28 +9,38 @@ const Sidebar = () => {
 		<div className="Sidebar">
 			<ul>
 				<li>
-					<span title="Images">
-						<NavLink
-							exact={true}
-							activeClassName="IsActive"
-							className="NavLink"
-							to="/images"
-						>
-							<FontAwesomeIcon icon={faImages} size="2x" />
-						</NavLink>
-					</span>
+					<NavLink
+						exact={true}
+						activeClassName="IsActive"
+						className="NavLink"
+						to="/images"
+					>
+						<div className="SidebarItem">
+							<div className="Icon">
+								<FontAwesomeIcon icon={faImages} size="lg" />
+							</div>
+							<p>
+								<b>Images</b>
+							</p>
+						</div>
+					</NavLink>
 				</li>
 				<li>
-					<span title="Bookmarks">
-						<NavLink
-							exact={true}
-							activeClassName="IsActive"
-							className="NavLink"
-							to="/bookmarks"
-						>
-							<FontAwesomeIcon icon={faBookmark} size="2x" />
-						</NavLink>
-					</span>
+					<NavLink
+						exact={true}
+						activeClassName="IsActive"
+						className="NavLink"
+						to="/bookmarks"
+					>
+						<div className="SidebarItem">
+							<div className="Icon">
+								<FontAwesomeIcon icon={faBookmark} size="lg" />
+							</div>
+							<p>
+								<b>Bookmarks</b>
+							</p>
+						</div>
+					</NavLink>
 				</li>
 			</ul>
 		</div>

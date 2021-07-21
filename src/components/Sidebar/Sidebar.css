@@ -3,31 +3,45 @@
 	flex-direction: column;
 	background-color: #cbd5e0;
 	height: 100vh;
-	padding: 20px;
+	padding: 24px;
+	/* padding: 20px; */
 	/* position: sticky;
 	top: 0; */
+	/* -webkit-box-shadow: 1px 0px 0px 0px #CBD5E0;
+	box-shadow: 1px 0px 0px 0px #CBD5E0; */
 }
 
 .Sidebar ul {
 	list-style-type: none;
 }
 
-.Sidebar li {
-	padding: 16px;
+.SidebarItem {
 	display: flex;
-	justify-content: center;
-	margin-bottom: 4px;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 16px;
+	margin-right: 12px;
+}
+
+.Icon {
+	width: 32px;
+	height: 32px;
+	display: grid;
+	place-items: center;
 }
 
 .NavLink {
+	/* color: #4A5568; */
 	color: #718096;
 }
 
 .NavLink:hover {
-	color: #455a64;
+	/* color: #4A5568; */
+	color: #304ffe;
 }
 
 .IsActive {
-	color: #171923;
-    /* color: #304ffe; */
+	/* color: #171923; */
+	color: #304ffe;
 }
+

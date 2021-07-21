@@ -5,16 +5,20 @@
 .SearchInput {
 	padding: 12px 12px 12px 38px;
 	font-size: 16px;
+	/* border-color: #cbd5e0;
+	border-style: solid; */
+	
 	border: 0;
 	-webkit-box-shadow: 0px 0px 0px 1px #cbd5e0;
 	box-shadow: 0px 0px 0px 1px #a0aec0;
 	border-radius: 3px;
+	
 }
 
 .SearchContainer [class*="fa-"] {
 	position: absolute;
 	left: 12px;
-	top: 14px;
+	top: 13px;
 	/* left: .1em;
     height: .75em;
     top: .3em; */

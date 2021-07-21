@@ -1,5 +1,7 @@
 import React from "react";
 import "./ImageList.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 const ImageList = (props) => {
 	const Bookmark = props.Bookmark;
@@ -21,8 +23,23 @@ const ImageList = (props) => {
 								".jpg"
 							}
 						/>
-						<div onClick={() => props.handleBookmarkAction(image)}>
-							<p className="BookmarkAction">Add to Bookmarks</p>
+						<div className="PhotoInfo">
+							<h3>
+								{image.title.length > 24
+									? image.title.substring(0, 24)
+									: image.title}
+							</h3>
+
+							<div
+								onClick={() =>
+									props.handleBookmarkAction(image)
+								}
+							>
+								<div className="BookmarkAction">
+									<FontAwesomeIcon icon={faBookmark} />
+									<p>Bookmark</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				))

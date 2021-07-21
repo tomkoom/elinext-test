@@ -1,10 +1,17 @@
 .BookmarkList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
 }
 
-.BookmarkItem {
-    max-height: 320px;
-    border-radius: 4px;
+.BookmarkPhoto {
+	max-height: 320px;
+	border-radius: 8px;
+}
+
+.PhotoInfo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 4px;
 }

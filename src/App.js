@@ -6,12 +6,14 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Sidebar from './components/Sidebar/Sidebar';
 import Bookmarks from './components/Bookmarks/Bookmarks';
 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Button from 'react-bootstrap/Button';
+
 
 function App() {
   const [images, setImages] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
 
   // API request
   const getImageRequest = async (searchValue) => {
@@ -59,6 +61,7 @@ function App() {
     }
   };
 
+  
   // Update bookmark list with removed bookmark & save updated list to local storage
   const handleRemoveBookmark = (image) => {
     const newBookmarkList = bookmarks.filter(
@@ -83,7 +86,6 @@ function App() {
 
         <div className="ContentContainer">
           <Switch>
-            {/* <Redirect exact from="/" to="/images" /> */}
             <Route path="/images" render={() => <Images
               images={images}
               searchValue={searchValue}
