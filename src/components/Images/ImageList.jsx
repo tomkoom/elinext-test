@@ -10,7 +10,7 @@ const ImageList = (props) => {
 		<div className="d-flex flex-wrap mt-4" style={{ gap: "20px" }}>
 			{props.searchValue ? (
 				props.images.map((image, index) => (
-					<div>
+					<div key={index}>
 						<img
 							style={{ maxHeight: "280px" }}
 							src={

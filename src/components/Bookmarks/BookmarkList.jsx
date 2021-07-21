@@ -4,12 +4,12 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const BookmarkList = (props) => {
 	return (
-		<div className="d-flex flex-wrap" style={{gap: "20px"}}>
+		<div className="d-flex flex-wrap" style={{ gap: "20px" }}>
 			{props.bookmarks.length !== 0 ? (
 				props.bookmarks.map((image, index) => (
-					<div>
+					<div key={index}>
 						<img
-							 style={{maxHeight: "280px"}}
+							style={{ maxHeight: "280px" }}
 							src={
 								"https://live.staticflickr.com/" +
 								image.server +

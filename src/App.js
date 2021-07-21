@@ -91,17 +91,17 @@ function App() {
       <Navbar bg="light" expand="sm">
         <Container className="px-4" fluid>
 
-          <Navbar.Brand>
+          
             <NavLink to="/" style={styles.links}>
               ImageFinder
             </NavLink>
-          </Navbar.Brand>
+          
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
 
-              <Nav.Link>
+              
                 <NavLink
                   exact={true}
                   activeClassName="IsActive"
@@ -114,9 +114,9 @@ function App() {
                     Images
                   </div>
                 </NavLink>
-              </Nav.Link>
+              
 
-              <Nav.Link>
+              
                 <NavLink
                   exact={true}
                   activeClassName="IsActive"
@@ -129,7 +129,7 @@ function App() {
                     Bookmarks
                   </div>
                 </NavLink>
-              </Nav.Link>
+              
             </Nav>
 
             <Nav>
