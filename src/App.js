@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import Header from './components/Header/Header';
+
+// Components
 import Images from './components/Images/Images';
-import { Switch, Route, Redirect } from "react-router-dom";
-import Sidebar from './components/Sidebar/Sidebar';
 import Bookmarks from './components/Bookmarks/Bookmarks';
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Button from 'react-bootstrap/Button';
+// React router
+import { Switch, Route, NavLink } from "react-router-dom";
 
+// FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImages, faBookmark, faUser } from "@fortawesome/free-solid-svg-icons";
+
+// Bootstrap
+import { Navbar, Nav, Container } from 'react-bootstrap';
+
+
+
+const styles = {
+  links: {
+    textDecoration: "none"
+  }
+}
 
 function App() {
   const [images, setImages] = useState([]);
@@ -61,7 +73,7 @@ function App() {
     }
   };
 
-  
+
   // Update bookmark list with removed bookmark & save updated list to local storage
   const handleRemoveBookmark = (image) => {
     const newBookmarkList = bookmarks.filter(
@@ -76,29 +88,78 @@ function App() {
   return (
     <div className="App">
 
-      <Header />
+      <Navbar bg="light" expand="sm">
+        <Container className="px-4" fluid>
 
-      <div className="MainContainer">
+          <Navbar.Brand>
+            <NavLink to="/" style={styles.links}>
+              ImageFinder
+            </NavLink>
+          </Navbar.Brand>
 
-        <div className="SidebarContainer">
-          <Sidebar />
-        </div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
 
-        <div className="ContentContainer">
-          <Switch>
-            <Route path="/images" render={() => <Images
-              images={images}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              handleAddBookmark={handleAddBookmark} />} />
-            <Route path="/bookmarks" render={() => <Bookmarks
-              bookmarks={bookmarks}
-              handleRemoveBookmark={handleRemoveBookmark} />} />
-          </Switch>
-        </div>
+              <Nav.Link>
+                <NavLink
+                  exact={true}
+                  activeClassName="IsActive"
+                  className="NavLink"
+                  to="/images"
+                  style={styles.links}
+                >
+                  <div className="d-flex">
+                    <FontAwesomeIcon icon={faImages} size="lg" style={{ marginRight: "8px" }} />
+                    Images
+                  </div>
+                </NavLink>
+              </Nav.Link>
 
-      </div>
+              <Nav.Link>
+                <NavLink
+                  exact={true}
+                  activeClassName="IsActive"
+                  className="NavLink"
+                  to="/bookmarks"
+                  style={styles.links}
+                >
+                  <div className="d-flex">
+                    <FontAwesomeIcon icon={faBookmark} size="lg" style={{ marginRight: "8px" }} />
+                    Bookmarks
+                  </div>
+                </NavLink>
+              </Nav.Link>
+            </Nav>
+
+            <Nav>
+
+              <Nav.Link>
+                <div className="d-flex">
+                  <FontAwesomeIcon icon={faUser} size="lg" style={{ marginRight: "8px" }} />
+                  Profile
+                </div></Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+
+      <Container className="p-4" fluid>
+        <Switch>
+          <Route path="/images" render={() => <Images
+            images={images}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            handleAddBookmark={handleAddBookmark} />} />
+          <Route path="/bookmarks" render={() => <Bookmarks
+            bookmarks={bookmarks}
+            handleRemoveBookmark={handleRemoveBookmark} />} />
+        </Switch>
+      </Container>
+
     </div>
+
   );
 }
 

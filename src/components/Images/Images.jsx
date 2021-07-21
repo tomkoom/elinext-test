@@ -1,41 +1,25 @@
 import React from "react";
-import "./Images.css";
-import ImageList from "./ImageList/ImageList";
-import SearchBox from "../SearchBox";
-
+// import "./Images.css";
+import ImageList from "./ImageList";
+import SearchBox from "../SearchBox/SearchBox";
 
 const Images = (props) => {
-
-
 	return (
-		<div className="Main">
+		<div>
 			<h1>Images</h1>
-			<div className="divider16"></div>
-			<div className="Search">
-				<SearchBox
-					searchValue={props.searchValue}
-					setSearchValue={props.setSearchValue}
-				/>
-			</div>
-			<div className="divider16"></div>
-			<div>
-				<ImageList
-					images={props.images}
-					searchValue={props.searchValue}
-					handleBookmarkAction={props.handleAddBookmark}
-				/>
-			</div>
+
+			<SearchBox
+				searchValue={props.searchValue}
+				setSearchValue={props.setSearchValue}
+			/>
+
+			<ImageList
+				images={props.images}
+				searchValue={props.searchValue}
+				handleBookmarkAction={props.handleAddBookmark}
+			/>
 		</div>
 	);
 };
 
 export default Images;
-
-// const handleAddBookmark = (image) => {
-// 	if (!bookmarks.includes(image)) {
-// 		const newBookmarkList = [...bookmarks, image];
-
-// 		setBookmarks(newBookmarkList);
-// 		saveToLocalStorage(newBookmarkList);
-// 	}
-// };
