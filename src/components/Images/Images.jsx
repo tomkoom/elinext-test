@@ -21,7 +21,10 @@ const Images = (props) => {
 					<Button onClick={props.handlePrevClick}>Prev</Button>
 					<Button onClick={props.handleNextClick}>Next</Button>
 				</div>
-				Page: {props.page}
+				<div>
+					<p className="my-0">Results per page: 5</p>
+					<p className="my-0">Page: {props.page}</p>
+				</div>
 			</div>
 
 			<ImageList
