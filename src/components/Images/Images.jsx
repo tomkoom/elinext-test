@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 const Images = (props) => {
 	return (
 		<div>
+			{props.loading ? <p>Loading...</p> : <p>Ready</p>}
 			<h1>Images</h1>
 
 			<SearchBox
@@ -13,19 +14,25 @@ const Images = (props) => {
 				setSearchValue={props.setSearchValue}
 			/>
 
-			<div
-				className="mt-4"
-				style={{ display: "flex", alignItems: "center", gap: "12px" }}
-			>
-				<div style={{ display: "flex", gap: "8px" }}>
-					<Button onClick={props.handlePrevClick}>Prev</Button>
-					<Button onClick={props.handleNextClick}>Next</Button>
+			{props.searchValue ? (
+				<div
+					className="mt-4"
+					style={{
+						display: "flex",
+						alignItems: "center",
+						gap: "12px",
+					}}
+				>
+					<div style={{ display: "flex", gap: "8px" }}>
+						<Button onClick={props.handlePrevClick}>Prev</Button>
+						<Button onClick={props.handleNextClick}>Next</Button>
+					</div>
+					<div>
+						<p className="my-0">Results per page: 5</p>
+						<p className="my-0">Page: {props.page}</p>
+					</div>
 				</div>
-				<div>
-					<p className="my-0">Results per page: 5</p>
-					<p className="my-0">Page: {props.page}</p>
-				</div>
-			</div>
+			) : null}
 
 			<ImageList
 				images={props.images}

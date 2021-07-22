@@ -20,8 +20,8 @@ function App() {
   const [images, setImages] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const handleNextClick = () => {
     setPage(page + 1)
@@ -35,7 +35,6 @@ function App() {
       console.log(page)
       console.log(images)
     }
-
   };
 
 
@@ -46,12 +45,14 @@ function App() {
     const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchValue}&per_page=5&page=${page}&format=json&nojsoncallback=1`;
 
     if (searchValue) {
+      setLoading(true)
       const response = await fetch(url);
       const responseJson = await response.json();
 
       if (responseJson.photos.photo) {
         setImages(responseJson.photos.photo);
       }
+      setLoading(false)
     }
   };
 
@@ -187,6 +188,7 @@ function App() {
             handleNextClick={handleNextClick}
             handlePrevClick={handlePrevClick}
             page={page}
+            loading={loading}
           />} />
 
           <Route path="/bookmarks" render={() => <Bookmarks
