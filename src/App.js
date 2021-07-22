@@ -16,15 +16,34 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import Home from './components/Home/Home';
 
 
-
 function App() {
   const [images, setImages] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
+  const [page, setPage] = useState(1);
+
+  const handleNextClick = () => {
+    setPage(page + 1)
+    console.log(page)
+    console.log(images)
+  };
+
+  const handlePrevClick = () => {
+    if (page > 1) {
+      setPage(page - 1)
+      console.log(page)
+      console.log(images)
+    }
+
+  };
+
+
   // API request
-  const getImageRequest = async (searchValue) => {
-    const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fc80275f938a5d77a50045e8994ac1a1&tags=${searchValue}&per_page=5&format=json&nojsoncallback=1`;
+  const getImageRequest = async (searchValue, page) => {
+    const apiKey = 'fc80275f938a5d77a50045e8994ac1a1';
+
+    const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchValue}&per_page=5&page=${page}&format=json&nojsoncallback=1`;
 
     if (searchValue) {
       const response = await fetch(url);
@@ -38,8 +57,8 @@ function App() {
 
 
   useEffect(() => {
-    getImageRequest(searchValue);
-  }, [searchValue]);
+    getImageRequest(searchValue, page);
+  }, [searchValue, page]);
 
 
   // Get bookmarks from local storage
@@ -50,12 +69,10 @@ function App() {
   }, []);
 
 
-  // Save to local storage function
+  // Save bookmarks to local storage
   const saveToLocalStorage = (items) => {
     localStorage.setItem("image-bookmarks", JSON.stringify(items));
   };
-
-
 
 
   // Update bookmark list with added bookmark, filter & save updated list to local storage
@@ -166,7 +183,12 @@ function App() {
             searchValue={searchValue}
             setSearchValue={setSearchValue}
             handleAddBookmark={handleAddBookmark}
-            handleRemoveBookmark={handleRemoveBookmark} />} />
+            handleRemoveBookmark={handleRemoveBookmark}
+            handleNextClick={handleNextClick}
+            handlePrevClick={handlePrevClick}
+            page={page}
+          />} />
+
           <Route path="/bookmarks" render={() => <Bookmarks
             bookmarks={bookmarks}
             handleRemoveBookmark={handleRemoveBookmark} />} />

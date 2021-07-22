@@ -24,7 +24,7 @@ const ImageList = (props) => {
 							alt={image.title}
 						/>
 						{/* Product info */}
-						<div className="d-flex flex-column mt-2">
+						<div className="mt-2">
 							<h5>
 								{image.title.length > 32
 									? image.title.substring(0, 32)
@@ -33,20 +33,20 @@ const ImageList = (props) => {
 
 							{!props.bookmarks.includes(image) ? (
 								<div
+									className="d-inline-flex"
+									style={{
+										cursor: "pointer",
+										gap: "8px",
+									}}
 									onClick={() =>
 										props.handleAddBookmark(image)
 									}
 								>
-									<div
-										className="d-flex"
-										style={{ cursor: "pointer" }}
-									>
-										<FontAwesomeIcon
-											className="mt-1"
-											icon={faBookmark}
-										/>
-										<p className="px-2">Bookmark</p>
-									</div>
+									<FontAwesomeIcon
+										className="mt-1"
+										icon={faBookmark}
+									/>
+									<p>Bookmark</p>
 								</div>
 							) : (
 								<div

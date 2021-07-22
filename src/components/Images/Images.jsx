@@ -1,6 +1,7 @@
 import React from "react";
 import ImageList from "./ImageList";
 import SearchBox from "../SearchBox/SearchBox";
+import { Button } from "react-bootstrap";
 
 const Images = (props) => {
 	return (
@@ -11,6 +12,17 @@ const Images = (props) => {
 				searchValue={props.searchValue}
 				setSearchValue={props.setSearchValue}
 			/>
+
+			<div
+				className="mt-4"
+				style={{ display: "flex", alignItems: "center", gap: "12px" }}
+			>
+				<div style={{ display: "flex", gap: "8px" }}>
+					<Button onClick={props.handlePrevClick}>Prev</Button>
+					<Button onClick={props.handleNextClick}>Next</Button>
+				</div>
+				Page: {props.page}
+			</div>
 
 			<ImageList
 				images={props.images}
