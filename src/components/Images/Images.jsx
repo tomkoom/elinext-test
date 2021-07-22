@@ -1,5 +1,4 @@
 import React from "react";
-// import "./Images.css";
 import ImageList from "./ImageList";
 import SearchBox from "../SearchBox/SearchBox";
 
@@ -15,8 +14,10 @@ const Images = (props) => {
 
 			<ImageList
 				images={props.images}
+				bookmarks={props.bookmarks}
 				searchValue={props.searchValue}
-				handleBookmarkAction={props.handleAddBookmark}
+				handleAddBookmark={props.handleAddBookmark}
+				handleRemoveBookmark={props.handleRemoveBookmark}
 			/>
 		</div>
 	);

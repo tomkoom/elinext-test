@@ -42,7 +42,7 @@ function App() {
   }, [searchValue]);
 
 
-  // Get bookmarks from local storage when page loads
+  // Get bookmarks from local storage
   useEffect(() => {
     const imageBookmarks = JSON.parse(localStorage.getItem("image-bookmarks")) || [];
 
@@ -56,13 +56,25 @@ function App() {
   };
 
 
-  // Update bookmark list with added bookmark & save updated list to local storage
+
+
+  // Update bookmark list with added bookmark, filter & save updated list to local storage
   const handleAddBookmark = (image) => {
     if (!bookmarks.includes(image)) {
       const newBookmarkList = [...bookmarks, image];
 
-      setBookmarks(newBookmarkList);
-      saveToLocalStorage(newBookmarkList);
+      // Filter duplicates
+      const filteredBookmarkList = newBookmarkList.reduce((acc, current) => {
+        const duplicate = acc.find(img => img.id === current.id);
+        if (!duplicate) {
+          return acc.concat([current]);
+        } else {
+          return acc;
+        }
+      }, []);
+
+      setBookmarks(filteredBookmarkList);
+      saveToLocalStorage(filteredBookmarkList);
     }
   };
 
@@ -102,8 +114,11 @@ function App() {
                 to="/images"
                 style={{ textDecoration: "none" }}
               >
-                <div className="d-flex align-items-center">
-                  <FontAwesomeIcon icon={faImages} style={{ marginRight: "8px" }} />
+                <div className="d-flex align-items-center my-1">
+                  <div style={{ height: "24px", width: "24px", display: "grid", placeItems: "center" }}>
+                    <FontAwesomeIcon icon={faImages} style={{ marginRight: "8px" }} />
+                  </div>
+
                   Images
                 </div>
               </NavLink>
@@ -115,9 +130,11 @@ function App() {
                 to="/bookmarks"
                 style={{ textDecoration: "none" }}
               >
-                <div className="d-flex align-items-center">
-                  <FontAwesomeIcon icon={faBookmark} style={{ marginRight: "8px" }} />
-                  Bookmarks
+                <div className="d-flex align-items-center my-1">
+                  <div style={{ height: "24px", width: "24px", display: "grid", placeItems: "center" }}>
+                    <FontAwesomeIcon icon={faBookmark} style={{ marginRight: "8px" }} />
+                  </div>
+                  Bookmarks ({bookmarks.length})
                 </div>
               </NavLink>
             </Nav>
@@ -128,8 +145,10 @@ function App() {
                 to="#" className="mx-2"
                 style={{ textDecoration: "none", color: "#718096" }}
               >
-                <div className="d-flex align-items-center">
-                  <FontAwesomeIcon icon={faUser} style={{ marginRight: "8px" }} />
+                <div className="d-flex align-items-center my-1">
+                  <div style={{ height: "24px", width: "24px", display: "grid", placeItems: "center" }}>
+                    <FontAwesomeIcon icon={faUser} style={{ marginRight: "8px" }} />
+                  </div>
                   Profile
                 </div>
               </NavLink>
@@ -143,9 +162,11 @@ function App() {
         <Switch>
           <Route path="/images" render={() => <Images
             images={images}
+            bookmarks={bookmarks}
             searchValue={searchValue}
             setSearchValue={setSearchValue}
-            handleAddBookmark={handleAddBookmark} />} />
+            handleAddBookmark={handleAddBookmark}
+            handleRemoveBookmark={handleRemoveBookmark} />} />
           <Route path="/bookmarks" render={() => <Bookmarks
             bookmarks={bookmarks}
             handleRemoveBookmark={handleRemoveBookmark} />} />
@@ -160,13 +181,3 @@ function App() {
 
 export default App;
 
-
-
-// const handleAddBookmark = (image) => {
-//   if (!bookmarks.includes(image)) {
-//     const newBookmarkList = [...bookmarks, image];
-
-//     setBookmarks(newBookmarkList);
-//     saveToLocalStorage(newBookmarkList);
-//   }
-// };
