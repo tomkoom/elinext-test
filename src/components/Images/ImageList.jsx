@@ -1,5 +1,4 @@
 import React from "react";
-// import "./ImageList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -23,6 +22,7 @@ const ImageList = (props) => {
 							}
 							alt={image.title}
 						/>
+
 						{/* Product info */}
 						<div className="mt-2">
 							<h5>
@@ -31,12 +31,15 @@ const ImageList = (props) => {
 									: image.title}
 							</h5>
 
-							{!props.bookmarks.includes(image) ? (
+							{!props.bookmarks
+								.map((bookmark) => bookmark.id)
+								.includes(image.id) ? (
 								<div
-									className="d-inline-flex"
 									style={{
+										display: "inline-flex",
 										cursor: "pointer",
 										gap: "8px",
+										color: "#007bff",
 									}}
 									onClick={() =>
 										props.handleAddBookmark(image)
@@ -50,20 +53,21 @@ const ImageList = (props) => {
 								</div>
 							) : (
 								<div
+									style={{
+										display: "inline-flex",
+										cursor: "pointer",
+										gap: "8px",
+										color: "#007bff",
+									}}
 									onClick={() =>
 										props.handleRemoveBookmark(image)
 									}
 								>
-									<div
-										className="d-flex"
-										style={{ cursor: "pointer" }}
-									>
-										<FontAwesomeIcon
-											className="mt-1"
-											icon={faTimes}
-										/>
-										<p className="px-2">Remove</p>
-									</div>
+									<FontAwesomeIcon
+										className="mt-1"
+										icon={faTimes}
+									/>
+									<p>Remove</p>
 								</div>
 							)}
 						</div>

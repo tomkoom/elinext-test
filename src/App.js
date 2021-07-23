@@ -25,15 +25,11 @@ function App() {
 
   const handleNextClick = () => {
     setPage(page + 1)
-    console.log(page)
-    console.log(images)
   };
 
   const handlePrevClick = () => {
     if (page > 1) {
       setPage(page - 1)
-      console.log(page)
-      console.log(images)
     }
   };
 
@@ -42,7 +38,7 @@ function App() {
   const getImageRequest = async (searchValue, page) => {
     const apiKey = 'fc80275f938a5d77a50045e8994ac1a1';
 
-    const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchValue}&per_page=5&page=${page}&format=json&nojsoncallback=1`;
+    const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchValue}&per_page=10&page=${page}&format=json&nojsoncallback=1`;
 
     if (searchValue) {
       setLoading(true)
@@ -111,19 +107,17 @@ function App() {
   return (
     <div className="App">
 
+      {/* Nav */}
       <Navbar bg="light" expand="sm">
         <Container className="px-4" fluid>
-
 
           <NavLink to="/" style={{ textDecoration: "none", marginRight: "16px" }} >
             <b>ImageFinder</b>
           </NavLink>
 
-
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-
 
               <NavLink
                 exact={true}
@@ -158,7 +152,6 @@ function App() {
             </Nav>
 
             <Nav>
-
               <NavLink
                 to="#" className="mx-2"
                 style={{ textDecoration: "none", color: "#718096" }}
@@ -171,11 +164,12 @@ function App() {
                 </div>
               </NavLink>
             </Nav>
+
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-
+      {/* Content area */}
       <Container className="p-4" fluid>
         <Switch>
           <Route path="/images" render={() => <Images

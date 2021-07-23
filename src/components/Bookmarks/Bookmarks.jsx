@@ -8,7 +8,7 @@ const Bookmarks = (props) => {
 			<div className="mt-4">
 				<BookmarkList
 					bookmarks={props.bookmarks}
-					handleBookmarkAction={props.handleRemoveBookmark}
+					handleRemoveBookmark={props.handleRemoveBookmark}
 				/>
 			</div>
 		</div>

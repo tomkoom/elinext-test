@@ -31,20 +31,21 @@ const BookmarkList = (props) => {
 							{/* <h3>{image.title}</h3> */}
 
 							<div
+								style={{
+									display: "inline-flex",
+									cursor: "pointer",
+									gap: "8px",
+									color: "#007bff",
+								}}
 								onClick={() =>
-									props.handleBookmarkAction(image)
+									props.handleRemoveBookmark(image)
 								}
 							>
-								<div
-									className="d-flex"
-									style={{ cursor: "pointer" }}
-								>
-									<FontAwesomeIcon
-										className="mt-1"
-										icon={faTimes}
-									/>
-									<p className="px-2">Remove</p>
-								</div>
+								<FontAwesomeIcon
+									className="mt-1"
+									icon={faTimes}
+								/>
+								<p>Remove</p>
 							</div>
 						</div>
 					</div>
