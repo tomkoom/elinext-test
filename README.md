@@ -11,8 +11,7 @@ A customer needs a web app to search for images using Flickr. They also want to 
 - [x] The Bookmarks area should list all the saved images with ability to remove any single item.
 - [x] There is no limitation in frameworks except that the app should be built with the latest React.
 - [x] Bookmarks are saved to the browser local storage.
-- [ ] “Bookmark it” button should be disabled or replaced to “Remove it” button if an image is added into
-bookmark.
+- [x] “Bookmark it” button should be disabled or replaced to “Remove it” button if an image is added into bookmark.
 
 ### Nice to Have Things
 
