@@ -28,3 +28,4 @@ There are few more things that will increase the possibility of being hired.
 
 ### Extra
 - [x] Mobile responsive.
+- [x] Use Font Awesome.
