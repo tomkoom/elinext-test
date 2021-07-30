@@ -15,7 +15,6 @@ import { faImages, faBookmark, faUser } from "@fortawesome/free-solid-svg-icons"
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import Home from './components/Home/Home';
 
-
 function App() {
   const [images, setImages] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
@@ -32,7 +31,6 @@ function App() {
       setPage(page - 1)
     }
   };
-
 
   // API request
   const getImageRequest = async (searchValue, page) => {
@@ -52,11 +50,9 @@ function App() {
     }
   };
 
-
   useEffect(() => {
     getImageRequest(searchValue, page);
   }, [searchValue, page]);
-
 
   // Get bookmarks from local storage
   useEffect(() => {
@@ -65,12 +61,10 @@ function App() {
     setBookmarks(imageBookmarks);
   }, []);
 
-
   // Save bookmarks to local storage
   const saveToLocalStorage = (items) => {
     localStorage.setItem("image-bookmarks", JSON.stringify(items));
   };
-
 
   // Update bookmark list with added bookmark, filter & save updated list to local storage
   const handleAddBookmark = (image) => {
@@ -92,7 +86,6 @@ function App() {
     }
   };
 
-
   // Update bookmark list with removed bookmark & save updated list to local storage
   const handleRemoveBookmark = (image) => {
     const newBookmarkList = bookmarks.filter(
@@ -102,7 +95,6 @@ function App() {
     setBookmarks(newBookmarkList);
     saveToLocalStorage(newBookmarkList);
   };
-
 
   return (
     <div className="App">
